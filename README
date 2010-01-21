@@ -1,0 +1,6 @@
+Setting up conf files for a new host
+
+    git clone git@github.com:jch/jch-dotfiles.git
+    cd jch-dotfiles
+    ./setup.sh
+

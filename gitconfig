@@ -1,0 +1,17 @@
+[color]
+    ui = auto
+
+[alias]
+    co = checkout
+    st = status
+    ci = commit
+    a = add
+    b= branch
+    d = diff
+    l = log
+    pl = pull
+    ps = push
+    ph = push
+
+[apply]
+    whitespace = nowarn
