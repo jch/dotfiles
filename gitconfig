@@ -12,6 +12,12 @@
     pl = pull
     ps = push
     ph = push
+    m = merge
+    f = fetch
 
 [apply]
     whitespace = nowarn
+
+[user]
+    name = Jerry Cheung
+	email = jch@whatcodecraves.com
