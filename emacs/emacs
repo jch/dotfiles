@@ -21,6 +21,10 @@
 (set-background-color "black")
 (set-foreground-color "white")
 
+;; ### Carbon Emacs ###
+(setq mac-command-modifier 'alt
+      mac-option-modifier 'meta)
+
 ;; doing a replace followed by a search, uses the last search string
 (setq query-replace-interactive t)
 
@@ -67,8 +71,8 @@
 ;; (put 'upcase-region 'disabled nil)
 
 ;; fix annoying shell backspace problem
-;; 0 for ibook, 1 for imac
-(normal-erase-is-backspace-mode 1)
+;; 0 for ibook/macbook, 1 for imac
+(normal-erase-is-backspace-mode 0)
 
 ;; http://trey-jackson.blogspot.com/2008/01/emacs-tip-11-uniquify.html
 (require 'uniquify)
@@ -83,3 +87,8 @@
 (setq dired-recursive-deletes 'top)
 
 ;; http://cvs.savannah.gnu.org/viewvc/*checkout*/emacs/emacs/lisp/emacs-lisp/re-builder.el
+
+;; Add color to a shell running in emacs 'M-x shell'
+;(autoload 'ansi-color-for-comint-mode-on 'ansi-color' nil t)
+;(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
