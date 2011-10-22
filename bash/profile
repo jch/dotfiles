@@ -1,0 +1,72 @@
+# For local customization, add a file to ~/.profile.local
+# We will export that at the end of this file.
+
+export PAGER="less"
+export EDITOR='emacs'
+
+alias less='less -R'
+alias home='ssh -t jch@whatcodecraves.com screen -DR'
+alias hproxy='ssh -D 9999 208.53.44.43'
+alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
+
+# Rails
+alias r="touch tmp/restart.txt"
+alias b="bundle exec"
+alias t='rake test'
+alias s='rake spec'
+
+# REE GC tweaks http://blog.evanweaver.com/articles/2009/04/09/ruby-gc-tuning/
+export RUBY_HEAP_MIN_SLOTS=600000 # 500000
+export RUBY_HEAP_SLOTS_INCREMENT=300000 # 250000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1 
+export RUBY_GC_MALLOC_LIMIT=60000000 # 50000000
+
+# RVM
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+# Git
+alias d='git diff --cached'
+alias gd='git diff'
+alias gg='git goggles'
+alias gwc='git whatchanged'
+alias ggcc='git goggles codereview complete'
+alias gm='git merge'
+alias gb='git branch'
+alias dbm='bundle exec rake db:migrate'
+alias dbs='bundle exec rake db:setup'
+function gr {
+  grb track $1 > /dev/null
+  git checkout $1
+}
+
+# Brent's show branch on prompt
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
+# Shell
+alias ls='ls --color'
+export PS1='\u@\h:\[\033[31;40m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
+
+# Mac
+if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
+  alias ls='ls -G'
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+  # homebrew
+  PATH="/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+fi
+
+# Project overrides: look for .aliases file in working directory
+if [ -e ".aliases" ] ; then
+  source .aliases
+fi
+
+# Local overrides
+if [ -e ".profile_local" ] ; then
+  source .profile_local
+fi
+  
