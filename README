@@ -5,3 +5,6 @@ Setting up conf files for a new host
     cd .dotfiles
     ./setup.sh
 
+TODO:
+
+* layer configs for different platforms: unix-base.sh, mac.sh, linux.sh
