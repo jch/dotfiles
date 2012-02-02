@@ -22,3 +22,6 @@ ln -s $DOTFILESDIR/screenrc ~/.screenrc
 echo "Setting up rdebug..."
 rm -f ~/.rdebugrc
 ln -s $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
+
+echo "All done!"
+echo "Don't forget to 'source ~/.profile'"
