@@ -3,25 +3,29 @@
 DOTFILESDIR=$(pwd)
 
 echo "Setting up bash..."
-rm -f ~/.profile
-ln -s $DOTFILESDIR/bash/profile ~/.profile
+ln -nfs $DOTFILESDIR/bash/profile ~/.profile
 
 echo "Setting up emacs..."
-rm -rf ~/.emacs ~/.emacs.d
-ln -s $DOTFILESDIR/emacs/emacs ~/.emacs
-ln -s $DOTFILESDIR/emacs/emacs.d ~/.emacs.d
+ln -nfs $DOTFILESDIR/emacs/emacs ~/.emacs
+ln -nfs $DOTFILESDIR/emacs/emacs.d ~/.emacs.d
 
 echo "Setting up git..."
-rm -f ~/.gitconfig
-ln -s $DOTFILESDIR/gitconfig ~/.gitconfig
+cat $DOTFILESDIR/gitconfig ~/.gitconfig.local > ~/.gitconfig.tmp
+mv ~/.gitconfig.tmp ~/.gitconfig
 
 echo "Setting up screen..."
-rm -f ~/.screenrc
-ln -s $DOTFILESDIR/screenrc ~/.screenrc
+ln -nfs $DOTFILESDIR/screenrc ~/.screenrc
 
 echo "Setting up rdebug..."
-rm -f ~/.rdebugrc
-ln -s $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
+ln -nfs $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
 
+echo "Setting up rvm..."
+if [ ! -d ~/.rvm ];
+  then bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+fi
+mkdir -p ~/.rvm/gemsets
+ln -nfs $DOTFILESDIR/rvm/global.gems ~/.rvm/gemsets/global.gems
+
+echo ""
 echo "All done!"
 echo "Don't forget to 'source ~/.profile'"
