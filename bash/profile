@@ -2,7 +2,7 @@
 # We will export that at the end of this file.
 
 export PAGER="less"
-export EDITOR='emacs'
+export EDITOR='subl'
 
 alias less='less -R'
 alias home='ssh -t jch@whatcodecraves.com screen -DR'
@@ -23,6 +23,9 @@ export RUBY_GC_MALLOC_LIMIT=60000000 # 50000000
 
 # RVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+# Noexec - no need to type bundle exec
+RUBYOPT="-r`noexec`"
 
 # Git
 alias d='git diff --cached'
