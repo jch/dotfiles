@@ -24,9 +24,6 @@ export RUBY_GC_MALLOC_LIMIT=60000000 # 50000000
 # RVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
-# Noexec - no need to type bundle exec
-RUBYOPT="-r`noexec`"
-
 # Git
 alias d='git diff --cached'
 alias gd='git diff'
