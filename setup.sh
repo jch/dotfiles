@@ -20,7 +20,7 @@ echo "Setting up rdebug..."
 ln -nfs $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
 
 echo "Setting up ack..."
-ln -nfs $DOTFILESDIR/ack ~/.ackrc
+ln -nfs $DOTFILESDIR/ackrc ~/.ackrc
 
 echo "Setting up rvm..."
 if [ ! -d ~/.rvm ];

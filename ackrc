@@ -1,2 +1,4 @@
---type-set=haml=.haml --pager=less
+--pager=less
 --ignore-dir=coverage
+--type-set=haml=.haml
+--type-set=erb=.erb
