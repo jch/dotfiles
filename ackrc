@@ -1,0 +1,2 @@
+--type-set=haml=.haml --pager=less
+--ignore-dir=coverage

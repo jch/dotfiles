@@ -19,6 +19,9 @@ ln -nfs $DOTFILESDIR/screenrc ~/.screenrc
 echo "Setting up rdebug..."
 ln -nfs $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
 
+echo "Setting up ack..."
+ln -nfs $DOTFILESDIR/ack ~/.ackrc
+
 echo "Setting up rvm..."
 if [ ! -d ~/.rvm ];
   then bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
