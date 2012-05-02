@@ -13,6 +13,7 @@ echo "Setting up git..."
 cat $DOTFILESDIR/gitconfig ~/.gitconfig.local > ~/.gitconfig.tmp
 mv ~/.gitconfig.tmp ~/.gitconfig
 ln -nfs $DOTFILESDIR/gitignore_global ~/.gitignore_global
+ln -nfs $DOTFILESDIR/git-templates ~/.git_templates
 
 echo "Setting up screen..."
 ln -nfs $DOTFILESDIR/screenrc ~/.screenrc
