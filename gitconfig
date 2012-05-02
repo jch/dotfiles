@@ -22,4 +22,5 @@
     name = Jerry Cheung
     email = jch@whatcodecraves.com
 
-
+[core]
+    excludesfile = ~/.gitignore_global

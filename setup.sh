@@ -12,6 +12,7 @@ ln -nfs $DOTFILESDIR/emacs/emacs.d ~/.emacs.d
 echo "Setting up git..."
 cat $DOTFILESDIR/gitconfig ~/.gitconfig.local > ~/.gitconfig.tmp
 mv ~/.gitconfig.tmp ~/.gitconfig
+ln -nfs $DOTFILESDIR/gitignore_global ~/.gitignore_global
 
 echo "Setting up screen..."
 ln -nfs $DOTFILESDIR/screenrc ~/.screenrc
