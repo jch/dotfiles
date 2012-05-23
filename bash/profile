@@ -2,12 +2,13 @@
 # We will export that at the end of this file.
 
 export PAGER="less"
-export EDITOR='subl'
+export EDITOR='subl -w'
 
 alias less='less -R'
 alias home='ssh -t jch@whatcodecraves.com screen -DR'
 alias hproxy='ssh -D 9999 208.53.44.43'
 alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
+alias emacs='emacs -nw'
 
 # Rails
 alias r="touch tmp/restart.txt"
@@ -52,6 +53,8 @@ function parse_git_branch {
 alias ls='ls --color'
 export PS1='\u@\h:\[\033[31;40m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
 
+eval "$(hub alias -s)"
+
 # Mac
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
   alias ls='ls -G'
@@ -66,7 +69,11 @@ if [ -e ".aliases" ] ; then
 fi
 
 # Local overrides
+if [ -e "~/.profile_local" ] ; then
+  source ~/.profile_local
+fi
+  
+# Current directory overrides
 if [ -e ".profile_local" ] ; then
   source .profile_local
 fi
-  
