@@ -29,11 +29,20 @@
 # OS generated files #
 ######################
 .DS_Store*
+.DS_Store
 ehthumbs.db
 Icon?
 Thumbs.db
 
+# Local Environment Overrides #
+.profile_local
 
 *.orig
 *.rej
 *~
+
+# Sublime Text #
+# http://www.sublimetext.com/docs/2/projects.html
+*.sublime-project
+*.sublime-workspace
+
