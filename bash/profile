@@ -5,7 +5,7 @@ export PAGER="less"
 export EDITOR='subl -w'
 
 alias less='less -R'
-alias home='ssh -t jch@whatcodecraves.com screen -DR'
+alias home='ssh -t jch@whatcodecraves.com'
 alias hproxy='ssh -D 9999 208.53.44.43'
 alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
 alias emacs='emacs -nw'
@@ -60,12 +60,17 @@ if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
   alias ls='ls -G'
   alias updatedb='sudo /usr/libexec/locate.updatedb'
   # homebrew
-  PATH="/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+  PATH="/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH"
 fi
 
 # Project overrides: look for .aliases file in working directory
 if [ -e ".aliases" ] ; then
   source .aliases
+fi
+
+# Project environment variables: source .env file
+if [ -e ".env" ] ; then
+  source .env
 fi
 
 # Local overrides
