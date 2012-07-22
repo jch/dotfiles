@@ -68,11 +68,6 @@ if [ -e ".aliases" ] ; then
   source .aliases
 fi
 
-# Project environment variables: source .env file
-if [ -e ".env" ] ; then
-  source .env
-fi
-
 # Local overrides
 if [ -e "~/.profile_local" ] ; then
   source ~/.profile_local
