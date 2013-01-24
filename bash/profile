@@ -53,8 +53,6 @@ function parse_git_branch {
 alias ls='ls --color'
 export PS1='\u@\h:\[\033[31;40m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
 
-eval "$(hub alias -s)"
-
 # Mac
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
   alias ls='ls -G'
