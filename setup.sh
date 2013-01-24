@@ -2,6 +2,8 @@
 
 DOTFILESDIR=$(pwd)
 
+mkdir -p ~/.profile.d
+
 echo "Setting up bash..."
 ln -nfs $DOTFILESDIR/bash/profile ~/.profile
 
@@ -14,6 +16,7 @@ cat $DOTFILESDIR/gitconfig ~/.gitconfig.local > ~/.gitconfig.tmp
 mv ~/.gitconfig.tmp ~/.gitconfig
 ln -nfs $DOTFILESDIR/gitignore_global ~/.gitignore_global
 ln -nfs $DOTFILESDIR/git-templates ~/.git_templates
+ln -nfs $DOTFILESDIR/bash/git-completion ~/.profile.d/git-completion
 
 echo "Setting up screen..."
 ln -nfs $DOTFILESDIR/screenrc ~/.screenrc
