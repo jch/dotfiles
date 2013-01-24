@@ -75,3 +75,5 @@ fi
 if [ -e ".profile_local" ] ; then
   source .profile_local
 fi
+
+source ~/.profile.d/git-completion
