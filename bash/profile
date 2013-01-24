@@ -5,7 +5,7 @@ export PAGER="less"
 export EDITOR='subl -w'
 
 alias less='less -R'
-alias home='ssh -t jch@whatcodecraves.com'
+alias home='ssh -t jch@whatcodecraves.com "screen -DR"'
 alias hproxy='ssh -D 9999 208.53.44.43'
 alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
 alias emacs='emacs -nw'
