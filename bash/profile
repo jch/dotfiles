@@ -16,6 +16,17 @@ alias b="bundle exec"
 alias t='rake test'
 alias s='rake spec'
 
+# Heroku
+function h { heroku ${@:1:($#-1)} --app ${@: -1} ; }
+function hp { h $@ enterprise-web ; }
+function hs { h $@ enterprise-web-staging ; }
+
+alias hpc="hp run console"
+alias hsc="hs run console"
+
+alias hpl="hp logs -t"
+alias hsl="hs logs -t"
+
 # REE GC tweaks http://blog.evanweaver.com/articles/2009/04/09/ruby-gc-tuning/
 export RUBY_HEAP_MIN_SLOTS=600000 # 500000
 export RUBY_HEAP_SLOTS_INCREMENT=300000 # 250000
