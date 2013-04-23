@@ -12,6 +12,7 @@
     pl = pull
     ps = push
     ph = push
+    pr = pull-request
     m = merge
     f = fetch
 
