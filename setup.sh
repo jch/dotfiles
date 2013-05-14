@@ -28,11 +28,6 @@ ln -nfs $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
 echo "Setting up ack..."
 ln -nfs $DOTFILESDIR/ackrc ~/.ackrc
 
-echo "Setting up sublime text 2..."
-if [ -d ~/Library/Application\ Support ];
-  then ln -nfs $DOTFILESDIR/sublime_text/Sublime\ Text\ 2 ~/Library/Application\ Support/Sublime\ Text\ 2
-fi
-
 echo ""
 echo "All done!"
 echo "Don't forget to 'source ~/.profile'"
