@@ -2,7 +2,7 @@
 # We will export that at the end of this file.
 
 export PAGER="less"
-export EDITOR='subl -w'
+export EDITOR='atom'
 
 alias less='less -R'
 alias home='ssh -t jch@whatcodecraves.com "screen -DR"'
@@ -26,15 +26,6 @@ alias hsc="hs run console"
 
 alias hpl="hp logs -t"
 alias hsl="hs logs -t"
-
-# REE GC tweaks http://blog.evanweaver.com/articles/2009/04/09/ruby-gc-tuning/
-export RUBY_HEAP_MIN_SLOTS=600000 # 500000
-export RUBY_HEAP_SLOTS_INCREMENT=300000 # 250000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1 
-export RUBY_GC_MALLOC_LIMIT=60000000 # 50000000
-
-# RVM
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # Git
 alias d='git diff --cached'
