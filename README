@@ -4,7 +4,3 @@ Setting up conf files for a new host
     git clone git@github.com:jch/dotfiles.git .dotfiles
     cd .dotfiles
     ./setup.sh
-
-TODO:
-
-* layer configs for different platforms: unix-base.sh, mac.sh, linux.sh. Possibly use [with_options](http://edgeguides.rubyonrails.org/active_support_core_extensions.html#with_options) to nest options
