@@ -30,9 +30,6 @@ alias hsl="hs logs -t"
 # Git
 alias d='git diff --cached'
 alias gd='git diff'
-alias gg='git goggles'
-alias gwc='git whatchanged'
-alias ggcc='git goggles codereview complete'
 alias gm='git merge'
 alias gb='git branch'
 alias dbm='bundle exec rake db:migrate'
@@ -44,7 +41,7 @@ function gr {
 
 # Brent's show branch on prompt
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo ""
 }
 
 function parse_git_branch {
