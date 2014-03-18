@@ -5,7 +5,7 @@ export PAGER="less"
 export EDITOR='atom'
 
 alias less='less -R'
-alias home='ssh -t jch@whatcodecraves.com "screen -DR"'
+alias home='ssh -t jch@rockyroadblog.com "screen -DR"'
 alias hproxy='ssh -D 9999 208.53.44.43'
 alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
 alias emacs='emacs -nw'
@@ -53,7 +53,7 @@ function parse_git_branch {
 
 # Shell
 alias ls='ls --color'
-export PS1='\u@\h:\[\033[31;40m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
+export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
 
 # Mac
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
@@ -72,7 +72,7 @@ fi
 if [ -e "~/.profile_local" ] ; then
   source ~/.profile_local
 fi
-  
+
 # Current directory overrides
 if [ -e ".profile_local" ] ; then
   source .profile_local
