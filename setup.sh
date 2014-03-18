@@ -6,6 +6,9 @@ mkdir -p ~/.profile.d
 
 echo "Setting up bash..."
 ln -nfs $DOTFILESDIR/bash/profile ~/.profile
+if [ ! -f ~/.profile_local ]; then
+  cp $DOTFILESDIR/bash/profile_local ~/.profile_local
+fi
 
 echo "Setting up emacs..."
 ln -nfs $DOTFILESDIR/emacs/emacs ~/.emacs
@@ -28,6 +31,7 @@ ln -nfs $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
 echo "Setting up ack..."
 ln -nfs $DOTFILESDIR/ackrc ~/.ackrc
 
+source ~/.profile
+
 echo ""
 echo "All done!"
-echo "Don't forget to 'source ~/.profile'"
