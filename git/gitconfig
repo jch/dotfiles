@@ -30,7 +30,7 @@
     templatedir = ~/.git_templates
 
 [push]
-    default = upstream
+    default = current
 
 [pull]
-    default = upstream
+    default = simple
