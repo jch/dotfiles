@@ -15,6 +15,7 @@
     pr = pull-request
     m = merge
     f = fetch
+	lol = log --graph --all --decorate --oneline
 
 [apply]
     whitespace = nowarn
