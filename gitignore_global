@@ -1,3 +1,5 @@
+.agignore
+
 # Compiled source #
 ###################
 *.com
@@ -36,6 +38,7 @@ Thumbs.db
 
 # Local Environment Overrides #
 .profile_local
+\.agignore
 
 *.orig
 *.rej
@@ -45,4 +48,7 @@ Thumbs.db
 # http://www.sublimetext.com/docs/2/projects.html
 *.sublime-project
 *.sublime-workspace
+
+# Ruby #
+.ruby-version
 
