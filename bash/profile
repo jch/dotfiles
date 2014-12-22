@@ -3,10 +3,19 @@
 
 export PAGER='less'
 export EDITOR='atom --wait'
+export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
 
+# Shell
+alias ls='ls --color'
 alias less='less -R'
 alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
 alias emacs='emacs -nw'
+
+# Mac
+if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
+  alias ls='ls -G'
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+fi
 
 # Rails
 alias r='rake'
@@ -36,42 +45,12 @@ alias gm='git merge'
 
 # Brent's show branch on prompt
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo ""
 }
 
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
-
-# Shell
-alias ls='ls --color'
-export PS1='\u@\h:\[\033[31;40m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
-
-# Mac
-if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
-  alias ls='ls -G'
-  alias updatedb='sudo /usr/libexec/locate.updatedb'
-
-  # homebrew
-  PATH="/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH"
-fi
-
-# Project overrides: look for .aliases file in working directory
-if [ -e ".aliases" ] ; then
-  source .aliases
-fi
-
-# Local overrides
-if [ -e "~/.profile_local" ] ; then
-  source ~/.profile_local
-fi
-  
-# Current directory overrides
-if [ -e ".profile_local" ] ; then
-  source .profile_local
-fi
-
-source ~/.profile.d/git-completion
 
 # hub tab-completion script for bash.
 # This script complements the completion script that ships with git.
@@ -98,3 +77,35 @@ EOF
   # Ensure cached commands are cleared
   __git_all_commands=""
 fi
+
+source ~/.profile.d/git-completion
+
+# Mac
+if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
+  alias ls='ls -G'
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+
+  # homebrew
+  PATH="/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH"
+fi
+
+# Project overrides: look for .aliases file in working directory
+if [ -e ".aliases" ] ; then
+  source .aliases
+fi
+
+# Local overrides
+if [ -e "~/.profile_local" ] ; then
+  source ~/.profile_local
+fi
+  
+# Current directory overrides
+if [ -e ".profile_local" ] ; then
+  source .profile_local
+fi
+
+# Project overrides: look for .aliases file in working directory
+[ -f ".aliases" ] && source .aliases
+
+# Local overrides
+[ -f "$HOME/.profile_local" ] && source ~/.profile_local

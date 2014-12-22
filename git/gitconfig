@@ -15,6 +15,7 @@
     pr = pull-request
     m = merge
     f = fetch
+	lol = log --graph --all --decorate --oneline
 
 [apply]
     whitespace = nowarn
@@ -28,3 +29,9 @@
 
 [init]
     templatedir = ~/.git_templates
+
+[push]
+    default = current
+
+[pull]
+    default = simple
