@@ -27,12 +27,6 @@ alias dbm='rake db:migrate db:test:prepare'
 # Heroku
 function h { heroku ${@:1:($#-1)} --app ${@: -1} --account jch; }
 
-# REE GC tweaks http://blog.evanweaver.com/articles/2009/04/09/ruby-gc-tuning/
-export RUBY_HEAP_MIN_SLOTS=600000 # 500000
-export RUBY_HEAP_SLOTS_INCREMENT=300000 # 250000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1 
-export RUBY_GC_MALLOC_LIMIT=60000000 # 50000000
-
 # Add test to Ruby load path
 export RUBYLIB=test
 
