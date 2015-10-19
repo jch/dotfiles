@@ -1,6 +1,15 @@
 # For local customization, add a file to ~/.profile.local
 # We will export that at the end of this file.
 
+# Brent's show branch on prompt
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo ""
+}
+
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
 export PAGER='less'
 export EDITOR='atom --wait'
 export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
@@ -22,7 +31,10 @@ alias r='rake'
 alias b='bundle exec'
 alias ss='script/server'
 alias sc='script/console'
+alias sb='script/bootstrap'
 alias dbm='rake db:migrate db:test:prepare'
+alias t='testrb'
+alias testlog='touch log/test.log; less +F log/test.log; rm log/test.log'
 
 # Heroku
 function h { heroku ${@:1:($#-1)} --app ${@: -1} --account jch; }
@@ -34,17 +46,13 @@ export RUBYLIB=test
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # Git
-alias d='git diff --cached'
-alias gm='git merge'
-
-# Brent's show branch on prompt
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo ""
-}
-
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
-}
+alias d="git diff --cached"
+alias gm="git merge"
+alias gh="github"
+alias ph="git push -u"
+alias pl="git pull"
+alias fe="git fetch"
+alias ch="git rev-parse HEAD | pbcopy; git show"
 
 # hub tab-completion script for bash.
 # This script complements the completion script that ships with git.
@@ -92,7 +100,7 @@ fi
 if [ -e "~/.profile_local" ] ; then
   source ~/.profile_local
 fi
-  
+
 # Current directory overrides
 if [ -e ".profile_local" ] ; then
   source .profile_local
