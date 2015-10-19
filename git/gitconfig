@@ -2,30 +2,30 @@
     ui = auto
 
 [alias]
-    co = checkout
-    st = status
-    ci = commit
-    a = add
-    b= branch
-    d = diff
-    l = log
-    pl = pull
-    ps = push
-    ph = push
-    pr = pull-request
-    m = merge
-    f = fetch
-	lol = log --graph --all --decorate --oneline
+    co  = checkout
+    st  = status -sb
+    ci  = commit
+    a   = add
+    b   = branch
+    d   = diff
+    l   = log
+    pl  = pull
+    ps  = push
+    pr  = pull-request
+    m   = merge
+    f   = fetch
+	  lol = log --graph --all --decorate --oneline
+    bs  = for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/ --count=10
 
 [apply]
     whitespace = nowarn
 
 [user]
     name = Jerry Cheung
-    email = jch@whatcodecraves.com
+	 email = jollyjerry@gmail.com
 
 [core]
-    excludesfile = ~/.gitignore_global
+    excludesfile = /Users/jch/.gitignore
 
 [init]
     templatedir = ~/.git_templates
@@ -35,3 +35,13 @@
 
 [pull]
     default = simple
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+protocol = https
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
