@@ -40,6 +40,11 @@ alias jp='ruby -rawesome_print -rjson -ne "ap JSON.parse(\$_)"'
 # Heroku
 function h { heroku ${@:1:($#-1)} --app ${@: -1} --account jch; }
 
+# Arduino
+alias ardb="platformio -f -c atom run"
+alias ardu="platformio -f -c atom run -t upload"
+alias ardm="platformio serialports monitor"
+
 # Add test to Ruby load path
 export RUBYLIB=test
 
