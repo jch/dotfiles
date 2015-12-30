@@ -15,6 +15,7 @@
     f   = fetch
 	  lol = log --graph --all --decorate --oneline
     b   = "!f(){ git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/ --count=10 | cat -n | sed -n $1p | (test "$1" && (sed -e s/^[[:space:][:digit:]]*// | xargs git checkout > /dev/null) || cat) }; f"
+    c   = compare
 
 [apply]
     whitespace = nowarn
