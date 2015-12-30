@@ -35,6 +35,7 @@ alias sb='script/bootstrap'
 alias dbm='rake db:migrate db:test:prepare'
 alias t='testrb'
 alias testlog='touch log/test.log; less +F log/test.log; rm log/test.log'
+alias jp='ruby -rawesome_print -rjson -ne "ap JSON.parse(\$_)"'
 
 # Heroku
 function h { heroku ${@:1:($#-1)} --app ${@: -1} --account jch; }
