@@ -52,3 +52,5 @@ Thumbs.db
 # Ruby #
 .ruby-version
 
+# Ctags #
+.tags
