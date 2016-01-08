@@ -1,6 +1,18 @@
 # For local customization, add a file to ~/.profile.local
 # We will export that at the end of this file.
 
+# Variables
+export PAGER='less'
+export EDITOR='atom --wait'
+export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
+export RUBYLIB=test # Add test to Ruby load path
+
+
+# Load up The GitHub Setup's environment.
+if [ -f "/opt/github/env.sh" ]
+  then source "/opt/github/env.sh"
+fi
+
 # Brent's show branch on prompt
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo ""
@@ -9,10 +21,6 @@ function parse_git_dirty {
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
-
-export PAGER='less'
-export EDITOR='atom --wait'
-export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
 
 # Shell
 alias ls='ls --color'
@@ -31,9 +39,10 @@ alias r='rake'
 alias b='bundle exec'
 alias ss='script/server'
 alias sc='script/console'
-alias sb='script/bootstrap'
+alias bs='script/bootstrap'
 alias dbm='rake db:migrate db:test:prepare'
-alias t='testrb'
+alias t='bin/testrb'
+alias tc='USER_DEFAULT_SCOPING_ENABLED=1 REPO_DEFAULT_SCOPING_ENABLED=1 bin/testrb'
 alias testlog='touch log/test.log; less +F log/test.log; rm log/test.log'
 alias jp='ruby -rawesome_print -rjson -ne "ap JSON.parse(\$_)"'
 
@@ -44,12 +53,6 @@ function h { heroku ${@:1:($#-1)} --app ${@: -1} --account jch; }
 alias ardb="platformio -f -c atom run"
 alias ardu="platformio -f -c atom run -t upload"
 alias ardm="platformio serialports monitor"
-
-# Add test to Ruby load path
-export RUBYLIB=test
-
-# RVM
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # Git
 alias d="git diff --cached"
@@ -92,9 +95,6 @@ source ~/.profile.d/git-completion
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
   alias ls='ls -G'
   alias updatedb='sudo /usr/libexec/locate.updatedb'
-
-  # homebrew
-  PATH="/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH"
 fi
 
 # Project overrides: look for .aliases file in working directory
