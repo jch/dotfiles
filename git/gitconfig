@@ -1,49 +1,51 @@
 [color]
-    ui = auto
+  ui = auto
 
 [alias]
-    co  = checkout
-    st  = status -sb
-    ci  = commit
-    a   = add
-    d   = diff
-    l   = log
-    pl  = pull
-    ps  = push
-    pr  = pull-request
-    m   = merge
-    f   = fetch
-	  lol = log --graph --all --decorate --oneline
-    b   = "!f(){ git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/ --count=10 | cat -n | sed -n $1p | (test "$1" && (sed -e s/^[[:space:][:digit:]]*// | xargs git checkout > /dev/null) || cat) }; f"
-    c   = compare
+  co  = checkout
+  st  = status -sb
+  ci  = commit
+  a   = add
+  d   = diff
+  l   = log
+  pl  = pull
+  ps  = push
+  pr  = pull-request
+  m   = merge
+  f   = fetch
+  lol = log --graph --all --decorate --oneline
+  b   = "!f(){ git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/ --count=10 | cat -n | sed -n $1p | (test "$1" && (sed -e s/^[[:space:][:digit:]]*// | xargs git checkout > /dev/null) || cat) }; f"
+  c   = compare
 
 [apply]
-    whitespace = nowarn
+  whitespace = nowarn
 
 [user]
-    name = Jerry Cheung
-	 email = jollyjerry@gmail.com
+  name = Jerry Cheung
+  email = jollyjerry@gmail.com
 
 [core]
 	excludesfile = /Users/jch/.gitignore_global
 
 [init]
-    templatedir = ~/.git_templates
+  templatedir = ~/.git_templates
 
 [push]
-    default = current
+  default = current
 
 [pull]
-    default = simple
+  default = simple
 
 [credential]
 	helper = osxkeychain
 
 [hub]
-protocol = https
+  protocol = https
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
 [github]
 	user = jch
