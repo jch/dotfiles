@@ -31,6 +31,9 @@ ln -nfs $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
 echo "Setting up ack..."
 ln -nfs $DOTFILESDIR/ackrc ~/.ackrc
 
+echo "Setting up ctags..."
+ln -nfs $DOTFILESDIR/ctags ~/.ctags
+
 source ~/.profile
 
 echo ""
