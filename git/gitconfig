@@ -37,7 +37,7 @@
     default = simple
 
 [credential]
-helper = /opt/boxen/bin/boxen-git-credential
+	helper = osxkeychain
 
 [hub]
 protocol = https
@@ -45,3 +45,5 @@ protocol = https
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[github]
+	user = jch
