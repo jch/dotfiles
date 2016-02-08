@@ -6,12 +6,10 @@ export PAGER='less'
 export EDITOR='atom --wait'
 export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
 export RUBYLIB=test # Add test to Ruby load path
+export PATH="bin:$HOME/projects/jsg/bin:$PATH"
 
-
-# Load up The GitHub Setup's environment.
-if [ -f "/opt/github/env.sh" ]
-  then source "/opt/github/env.sh"
-fi
+# Load rbenv
+eval "$(rbenv init -)"
 
 # Brent's show branch on prompt
 function parse_git_dirty {
@@ -39,9 +37,10 @@ alias r='rake'
 alias b='bundle exec'
 alias ss='script/server'
 alias sc='script/console'
-alias bs='script/bootstrap'
-alias dbm='rake db:migrate db:test:prepare'
+alias bs='script/bootstrap --pristine && rake db:migrate db:test:prepare && bin/zeus start'
+alias dbm='bin/rake db:migrate db:test:prepare'
 alias t='bin/testrb'
+alias zt='bin/zt'
 alias tc='USER_DEFAULT_SCOPING_ENABLED=1 REPO_DEFAULT_SCOPING_ENABLED=1 bin/testrb'
 alias testlog='touch log/test.log; less +F log/test.log; rm log/test.log'
 alias jp='ruby -rawesome_print -rjson -ne "ap JSON.parse(\$_)"'
@@ -96,19 +95,3 @@ if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
   alias ls='ls -G'
   alias updatedb='sudo /usr/libexec/locate.updatedb'
 fi
-
-# Project overrides: look for .aliases file in working directory
-if [ -e ".aliases" ] ; then
-  source .aliases
-fi
-
-# Local overrides
-[ -f "$HOME/.profile_local" ] && source "$HOME/.profile_local"
-
-# Current directory overrides
-if [ -e ".profile_local" ] ; then
-  source .profile_local
-fi
-
-# Project overrides: look for .aliases file in working directory
-[ -f ".aliases" ] && source .aliases
