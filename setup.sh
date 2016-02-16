@@ -34,6 +34,14 @@ ln -nfs $DOTFILESDIR/ackrc ~/.ackrc
 echo "Setting up ctags..."
 ln -nfs $DOTFILESDIR/ctags ~/.ctags
 
+echo "Setting up custom scripts..."
+for s in "$DOTFILESDIR/bin/*"; do
+  ln -nfs $s ~/bin/$(basename $s)
+done
+
+echo "Setting up brew packages..."
+brew bundle
+
 source ~/.profile
 
 echo ""
