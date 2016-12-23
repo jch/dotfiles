@@ -4,6 +4,7 @@ brew 'ack'
 brew 'ctags'
 brew 'hub'
 brew 'jq'
+brew 'lastpass-cli', args: ['--with-pinentry']
 brew 'rbenv'
 brew 'selecta'
 brew 'tidy-html5'
