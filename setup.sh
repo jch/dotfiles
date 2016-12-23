@@ -43,6 +43,9 @@ done
 echo "Setting up brew packages..."
 brew bundle
 
+echo "Setting up system wide gems..."
+sudo gem install rotp
+
 source ~/.profile
 
 echo ""
