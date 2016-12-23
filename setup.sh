@@ -3,6 +3,7 @@
 DOTFILESDIR=$(pwd)
 
 mkdir -p $HOME/.profile.d
+mkdir -p $HOME/bin
 
 echo "Setting up bash..."
 ln -nfs $DOTFILESDIR/bash/profile $HOME/.profile
