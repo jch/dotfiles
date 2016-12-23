@@ -25,6 +25,7 @@ alias ls='ls --color'
 alias less='less -R'
 alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
 alias emacs='emacs -nw'
+alias a='atom'
 
 # Mac
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
