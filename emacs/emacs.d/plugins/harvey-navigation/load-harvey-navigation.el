@@ -1,6 +1,4 @@
-;;; Lets you move the buffer without 
-
-;; quick move cursor to top or bottom of screen
+;; Brian Harvey Navigation
 (defun point-to-top ()
   "Put point on top line of window."
   (interactive)
