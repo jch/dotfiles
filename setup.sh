@@ -40,6 +40,11 @@ for s in "$DOTFILESDIR/bin/*"; do
   ln -nfs $s ~/bin/$(basename $s)
 done
 
+which brew > /dev/null 2>&1 || {
+  echo "Setting up homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
 echo "Setting up brew packages..."
 brew bundle
 
