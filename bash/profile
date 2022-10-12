@@ -4,7 +4,7 @@
 # Variables
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export PAGER='less'
-export EDITOR='atom --wait'
+export EDITOR='code --wait'
 export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
 export RUBYLIB=test # Add test to Ruby load path
 export PATH="bin:$HOME/bin:$HOME/projects/jsg/bin:$PATH"
