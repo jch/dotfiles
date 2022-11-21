@@ -12,6 +12,8 @@ brew 'postgresql'
 brew 'rbenv'
 brew 'selecta'
 brew 'tidy-html5'
+brew 'watch'
+
 cask 'caffeine'
 cask 'divvy'
 cask 'dropbox'
