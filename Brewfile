@@ -2,6 +2,7 @@ tap 'homebrew/cask'
 
 brew 'ack'
 brew 'ctags'
+brew 'emacs'
 brew 'ghostscript'
 brew 'hub'
 brew 'imagemagick'
