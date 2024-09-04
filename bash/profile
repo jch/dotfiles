@@ -8,6 +8,7 @@ export EDITOR='code --wait'
 export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
 export RUBYLIB=test # Add test to Ruby load path
 export PATH="bin:$HOME/bin:$HOME/projects/jsg/bin:$PATH"
+export BASH_SILENCE_DEPRECATION_WARNING=1 # OSX
 
 # Load rbenv
 eval "$(rbenv init -)"
@@ -27,6 +28,7 @@ alias less='less -R'
 alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
 alias emacs='emacs -nw'
 alias a='atom'
+alias ducks='du -cks * | sort -rn | head -11'  # faster du for finding large files
 
 # Mac
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
@@ -63,6 +65,11 @@ alias ph="git push -u"
 alias pl="git pull"
 alias fe="git fetch"
 alias ch="git rev-parse HEAD | pbcopy; git show"
+alias st="git status"
+alias au="git add -u"
+alias ap="git add -p"
+alias ci="git commit"
+alias cim="git commit -m"
 
 # hub tab-completion script for bash.
 # This script complements the completion script that ships with git.
