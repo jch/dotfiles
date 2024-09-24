@@ -7,17 +7,12 @@ mkdir -p $HOME/bin
 
 echo "Setting up bash..."
 ln -nfs $DOTFILESDIR/bash/profile $HOME/.profile
-if [ ! -f $HOME/.profile_local ]; then
-  cp $DOTFILESDIR/bash/profile_local $HOME/.profile_local
-fi
 
 echo "Setting up emacs..."
 ln -nfs $DOTFILESDIR/emacs/emacs   $HOME/.emacs
 ln -nfs $DOTFILESDIR/emacs/emacs.d $HOME/.emacs.d
 
 echo "Setting up git..."
-touch ~/.gitconfig.local
-
 ln -nfs $DOTFILESDIR/git/gitconfig        $HOME/.gitconfig
 ln -nfs $DOTFILESDIR/git/gitignore_global $HOME/.gitignore_global
 ln -nfs $DOTFILESDIR/git/git-templates    $HOME/.git_templates
@@ -40,16 +35,17 @@ for s in "$DOTFILESDIR/bin/*"; do
   ln -nfs $s ~/bin/$(basename $s)
 done
 
-which brew > /dev/null 2>&1 || {
-  echo "Setting up homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-}
+# Mac
+if [ Darwin == $(uname) ] ; then
+  which brew > /dev/null 2>&1 || {
+    echo "Setting up homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  }
 
-echo "Setting up brew packages..."
-brew bundle
-
-echo "Setting up system wide gems..."
-sudo gem install rotp
+  echo "Setting up brew packages..."
+  brew bundle || true
+  brew bundle cleanup --force || true
+fi
 
 source ~/.profile
 
