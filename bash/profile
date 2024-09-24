@@ -10,6 +10,8 @@ export LDFLAGS="-L/usr/local/opt/postgresql@16/lib"
 export CPPFLAGS="-I/usr/local/opt/postgresql@16/include"
 export PKG_CONFIG_PATH="/usr/local/opt/postgresql@16/lib/pkgconfig"
 
+eval "$(ssh-agent -s > /dev/null)"
+
 # Load rbenv
 eval "$(rbenv init -)"
 
