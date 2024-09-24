@@ -1,4 +1,7 @@
+tap 'zackelia/formulae'  # bclm
+
 brew 'ack'
+brew 'bclm'
 brew 'ctags'
 brew 'emacs'
 brew 'fzf'
@@ -19,6 +22,7 @@ cask 'calibre'
 cask 'discord'
 cask 'docker'
 cask 'google-chrome'
+cask 'google-drive'
 cask 'ngrok'
 cask 'signal'
 cask 'slack'
