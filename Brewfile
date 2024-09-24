@@ -14,7 +14,6 @@ brew 'rbenv'
 brew 'selecta'
 brew 'tidy-html5'
 brew 'watch'
-<<<<<<< HEAD
 
 cask 'calibre'
 cask 'discord'
