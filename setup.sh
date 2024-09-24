@@ -39,6 +39,12 @@ done
 
 # Mac
 if [ Darwin == $(uname) ] ; then
+  echo "Setting up mac..."
+  if [ /bin/bash != $SHELL ]; then
+    echo "Changing shell to bash..."
+    chsh -s /bin/bash
+  fi
+
   which brew > /dev/null 2>&1 || {
     echo "Setting up homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
