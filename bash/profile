@@ -53,6 +53,11 @@ alias ap="git add -p"
 alias cim="git commit -m"
 alias cam="git commit --amend"
 alias ch="git rev-parse HEAD | pbcopy; git show"
+alias st="git status"
+alias au="git add -u"
+alias ap="git add -p"
+alias ci="git commit"
+alias cim="git commit -m"
 
 # JSG
 if [[ -f .jsg_token ]]; then
