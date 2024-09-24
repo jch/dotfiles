@@ -4,29 +4,24 @@
 # Variables
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export PAGER='less'
-export EDITOR='code --wait'
-export PS1='\u@\h:\[\033[0;31m\]\w\[\033[0;33m\]$(parse_git_branch)\[\e[0m\]$ '
+export EDITOR='zed --wait'
+export PS1='\[\033[0;31m\]\w\[\033[0;33m\]\[\e[0m\] $ '
 export RUBYLIB=test # Add test to Ruby load path
-export PATH="bin:$HOME/bin:$HOME/projects/jsg/bin:$PATH"
+export RUBYOPT="-E utf-8:utf-8"
+export PATH="/usr/local/opt/postgresql@16/bin:bin:$HOME/bin:$HOME/projects/jsg/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/postgresql@16/lib"
+export CPPFLAGS="-I/usr/local/opt/postgresql@16/include"
+export PKG_CONFIG_PATH="/usr/local/opt/postgresql@16/lib/pkgconfig"
 
 # Load rbenv
 eval "$(rbenv init -)"
-
-# Brent's show branch on prompt
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo ""
-}
-
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
-}
 
 # Shell
 alias ls='ls --color'
 alias less='less -R'
 alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
 alias emacs='emacs -nw'
-alias a='atom'
+alias z='zed'
 
 # Mac
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
@@ -37,63 +32,29 @@ fi
 # Rails
 alias r='rake'
 alias b='bundle exec'
-alias ss='script/server'
-alias sc='script/console'
-alias bs='script/bootstrap --pristine && rake db:migrate db:test:prepare && bin/zeus start'
-alias dbm='bin/rake db:migrate db:test:prepare'
-alias t='bin/testrb'
-alias zt='bin/zt'
-alias tc='USER_DEFAULT_SCOPING_ENABLED=1 REPO_DEFAULT_SCOPING_ENABLED=1 bin/testrb'
+alias ss='bin/dev'
+alias rc='rails c'
+alias db='rails dbconsole'
+alias dbm='rails db:migrate'
+alias t='rails test'
 alias testlog='touch log/test.log; less +F log/test.log; rm log/test.log'
 alias jp='ruby -rawesome_print -rjson -ne "ap JSON.parse(\$_)"'
-
-# Heroku
-function h { heroku ${@:1:($#-1)} --app ${@: -1} --account jch; }
-
-# Arduino
-alias ardb="platformio -f -c atom run"
-alias ardu="platformio -f -c atom run -t upload"
-alias ardm="platformio serialports monitor"
 
 # Git
 alias d="git diff --cached"
 alias gm="git merge"
-alias gh="github"
 alias ph="git push -u"
 alias pl="git pull"
 alias fe="git fetch"
+alias st="git status"
+alias aa="git add ."
+alias au="git add -u"
+alias ap="git add -p"
+alias cim="git commit -m"
+alias cam="git commit --amend"
 alias ch="git rev-parse HEAD | pbcopy; git show"
 
-# hub tab-completion script for bash.
-# This script complements the completion script that ships with git.
-
-# Check that git tab completion is available
-if declare -F _git > /dev/null; then
-  # Duplicate and rename the 'list_all_commands' function
-  eval "$(declare -f __git_list_all_commands | \
-        sed 's/__git_list_all_commands/__git_list_all_commands_without_hub/')"
-
-  # Wrap the 'list_all_commands' function with extra hub commands
-  __git_list_all_commands() {
-    cat <<-EOF
-alias
-pull-request
-fork
-create
-browse
-compare
-EOF
-    __git_list_all_commands_without_hub
-  }
-
-  # Ensure cached commands are cleared
-  __git_all_commands=""
-fi
-
-source ~/.profile.d/git-completion
-
-# Mac
-if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
-  alias ls='ls -G'
-  alias updatedb='sudo /usr/libexec/locate.updatedb'
+# JSG
+if [[ -f .jsg_token ]]; then
+  source .jsg_token
 fi
