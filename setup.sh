@@ -45,8 +45,9 @@ if [ Darwin == $(uname) ] ; then
   }
 
   echo "Setting up brew packages..."
-  brew bundle || true
-  brew bundle cleanup --force || true
+  brew update
+  brew bundle
+  brew bundle cleanup --force
 fi
 
 source ~/.profile
