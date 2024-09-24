@@ -43,11 +43,12 @@ if [ Darwin == $(uname) ] ; then
     echo "Setting up homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   }
+  brew update --quiet
+  brew bundle --quiet
+  brew bundle cleanup --force > /dev/null
 
-  echo "Setting up brew packages..."
-  brew update
-  brew bundle
-  brew bundle cleanup --force
+  echo "Outdated homebrew packages, brew upgrade [package]..."
+  brew outdated
 fi
 
 source ~/.profile
