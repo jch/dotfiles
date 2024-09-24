@@ -2,6 +2,8 @@
 
 DOTFILESDIR=$(pwd)
 
+git pull
+
 mkdir -p $HOME/.profile.d
 mkdir -p $HOME/bin
 
