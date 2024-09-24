@@ -1,0 +1,1 @@
+IRB.conf[:COMMAND_ALIASES].merge!("ri": :show_doc)

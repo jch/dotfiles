@@ -23,8 +23,9 @@ ln -nfs $DOTFILESDIR/git/git-completion   $HOME/.profile.d/git-completion
 echo "Setting up screen..."
 ln -nfs $DOTFILESDIR/screenrc ~/.screenrc
 
-echo "Setting up rdebug..."
+echo "Setting up ruby..."
 ln -nfs $DOTFILESDIR/ruby/rdebugrc ~/.rdebugrc
+ln -nfs $DOTFILESDIR/ruby/irbrc    ~/.irbrc
 
 echo "Setting up ack..."
 ln -nfs $DOTFILESDIR/ackrc ~/.ackrc
