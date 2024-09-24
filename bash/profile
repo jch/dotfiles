@@ -1,6 +1,3 @@
-# For local customization, add a file to ~/.profile.local
-# We will export that at the end of this file.
-
 # Variables
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export PAGER='less'
@@ -16,6 +13,9 @@ export PKG_CONFIG_PATH="/usr/local/opt/postgresql@16/lib/pkgconfig"
 # Load rbenv
 eval "$(rbenv init -)"
 
+# Load fzf
+eval "$(fzf --bash)"
+
 # Shell
 alias ls='ls --color'
 alias less='less -R'
@@ -29,7 +29,7 @@ if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
   alias updatedb='sudo /usr/libexec/locate.updatedb'
 fi
 
-# Rails
+# Ruby
 alias r='rake'
 alias b='bundle exec'
 alias ss='bin/dev'
