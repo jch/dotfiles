@@ -2,7 +2,8 @@
 
 DOTFILESDIR=$(pwd)
 
-git pull
+echo "Fetching latest dotfiles..."
+git pull > /dev/null
 
 mkdir -p $HOME/.profile.d
 
