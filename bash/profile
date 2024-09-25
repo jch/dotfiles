@@ -10,6 +10,8 @@ export LDFLAGS="-L/usr/local/opt/postgresql@16/lib"
 export CPPFLAGS="-I/usr/local/opt/postgresql@16/include"
 export PKG_CONFIG_PATH="/usr/local/opt/postgresql@16/lib/pkgconfig"
 
+eval "$(ssh-agent -s > /dev/null)"
+
 # Load rbenv
 eval "$(rbenv init -)"
 
@@ -25,6 +27,7 @@ alias z='zed'
 
 # Mac
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
+  eval "$(/usr/local/bin/brew shellenv)"
   alias ls='ls -G'
   alias updatedb='sudo /usr/libexec/locate.updatedb'
 fi
