@@ -66,6 +66,12 @@
         "options": {
           "full_name": "zoom"
         }
+      },
+      "github": {
+        "version": "3.4.5-0b64c23c",
+        "options": {
+          "full_name": "github"
+        }
       }
     }
   },

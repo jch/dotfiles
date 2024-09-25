@@ -1,5 +1,6 @@
 cask 'calibre'
 cask 'discord'
+cask 'github'
 cask 'google-chrome'
 cask 'google-drive'
 cask 'ngrok'
