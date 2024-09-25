@@ -49,10 +49,14 @@ if [ Darwin == $(uname) ] ; then
   brew update --quiet
   brew bundle --quiet
 
-  echo "Outdated homebrew packages, brew upgrade [package]..."
-  brew outdated
   echo "Removing old homebrew packages..."
   brew cleanup
+
+  outdated_packages=$(brew outdated)
+  if [ -n "$outdated_packages" ]; then
+    echo "Outdated homebrew packages, brew upgrade [package]..."
+    echo "$outdated_packages"
+  fi
 fi
 
 source ~/.profile
