@@ -49,6 +49,13 @@ if [ Darwin == $(uname) ] ; then
   brew update --quiet
   brew bundle --quiet
 
+  if [[ " $@ " =~ " --personal " ]]; then
+    echo "Installing Brewfile.personal packages..."
+    brew bundle --file Brewfile.personal --quiet
+  else
+    echo "Skipping Brewfile.personal, add --personal to install desktop apps"
+  fi
+
   echo "Removing old homebrew packages..."
   brew cleanup
 
