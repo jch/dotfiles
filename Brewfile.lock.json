@@ -3,6 +3,9 @@
     "tap": {
       "zackelia/formulae": {
         "revision": "d20606bc22be379349616c26e8dd48cb98de30ed"
+      },
+      "homebrew/services": {
+        "revision": "c7f12486d51773c385fd695218d785aa13240a25"
       }
     },
     "brew": {
