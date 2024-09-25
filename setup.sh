@@ -5,6 +5,11 @@ DOTFILESDIR=$(pwd)
 echo "Fetching latest dotfiles..."
 git pull > /dev/null
 
+if [ /bin/bash != $SHELL ]; then
+  echo "Changing shell to bash..."
+  chsh -s /bin/bash
+fi
+
 mkdir -p $HOME/.profile.d
 
 echo "Setting up bash..."
@@ -36,10 +41,6 @@ ln -nfs $DOTFILESDIR/ctags ~/.ctags
 # Mac
 if [ Darwin == $(uname) ] ; then
   echo "Setting up mac..."
-  if [ /bin/bash != $SHELL ]; then
-    echo "Changing shell to bash..."
-    chsh -s /bin/bash
-  fi
 
   which brew > /dev/null 2>&1 || {
     echo "Setting up homebrew..."
