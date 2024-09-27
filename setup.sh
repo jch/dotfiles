@@ -3,6 +3,8 @@
 DOTFILESDIR=$(pwd)
 
 echo "Fetching latest dotfiles..."
+git reset --hard > /dev/null
+git clean -f
 git pull > /dev/null
 
 if [ /bin/bash != $SHELL ]; then
