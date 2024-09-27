@@ -5,11 +5,7 @@ export EDITOR='zed --wait'
 export PS1='\[\033[0;31m\]\w\[\033[0;33m\]\[\e[0m\] $ '
 
 eval "$(ssh-agent -s > /dev/null)"
-
-# Load rbenv
 eval "$(rbenv init -)"
-
-# Load fzf
 eval "$(fzf --bash)"
 
 # Shell
