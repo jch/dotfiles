@@ -42,6 +42,9 @@ ln -nfs $DOTFILESDIR/ctags ~/.ctags
 if [ Darwin == $(uname) ] ; then
   echo "Setting up mac..."
 
+  echo "Disable automatic device backups..."
+  defaults write com.apple.AMPDevicesAgent.plist AutomaticDeviceBackupsDisabled -bool true
+
   which brew > /dev/null 2>&1 || {
     echo "Setting up homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
