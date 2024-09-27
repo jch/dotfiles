@@ -4,10 +4,6 @@ export PAGER='less'
 export EDITOR='zed --wait'
 export PS1='\[\033[0;31m\]\w\[\033[0;33m\]\[\e[0m\] $ '
 
-eval "$(ssh-agent -s > /dev/null)"
-eval "$(rbenv init -)"
-eval "$(fzf --bash)"
-
 # Shell
 alias ls='ls --color'
 alias less='less -R'
@@ -56,3 +52,7 @@ alias cim="git commit -m"
 if [[ -f .jsg_token ]]; then
   source .jsg_token
 fi
+
+eval "$(ssh-agent -s > /dev/null)"
+eval "$(rbenv init -)"
+eval "$(fzf --bash)"
