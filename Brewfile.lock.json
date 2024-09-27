@@ -5,7 +5,7 @@
         "revision": "d20606bc22be379349616c26e8dd48cb98de30ed"
       },
       "homebrew/services": {
-        "revision": "d5d8a1d4ba61312a490fc818f1f2d733be50a467"
+        "revision": "725da8c538c6256ab98b8ea97f8c237cc59f4319"
       }
     },
     "brew": {
@@ -130,7 +130,7 @@
   "system": {
     "macos": {
       "sequoia": {
-        "HOMEBREW_VERSION": "4.3.24-52-g2f2ca82",
+        "HOMEBREW_VERSION": "4.3.24-121-gda74ca9",
         "HOMEBREW_PREFIX": "/usr/local",
         "Homebrew/homebrew-core": "api",
         "CLT": "16.0.0.0.1.1724870825",
