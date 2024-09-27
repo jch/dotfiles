@@ -3,7 +3,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export PAGER='less'
 export EDITOR='zed --wait'
 export PS1='\[\033[0;31m\]\w\[\033[0;33m\]\[\e[0m\] $ '
-export RUBYLIB=test # Add test to Ruby load path
 export RUBYOPT="-E utf-8:utf-8"
 
 eval "$(ssh-agent -s > /dev/null)"
