@@ -53,6 +53,6 @@ if [[ -f .jsg_token ]]; then
   source .jsg_token
 fi
 
-eval "$(ssh-agent -s > /dev/null)"
+eval "$(ssh-agent -s | grep -v 'echo')"
 eval "$(rbenv init -)"
 eval "$(fzf --bash)"
