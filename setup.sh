@@ -69,11 +69,11 @@ if [ Darwin == $(uname) ] ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   }
   brew update --quiet
-  brew bundle --quiet
+  brew bundle --quiet --no-lock --no-upgrade
 
   if [[ " $@ " =~ " --personal " ]]; then
     echo "Installing Brewfile.personal packages..."
-    brew bundle --file Brewfile.personal --quiet
+    brew bundle --file Brewfile.personal --quiet --no-lock --no-upgrade
   else
     echo "Skipping Brewfile.personal, add --personal to install desktop apps"
   fi
