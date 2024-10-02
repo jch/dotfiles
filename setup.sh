@@ -81,7 +81,7 @@ if [ Darwin == $(uname) ] ; then
   echo "Removing old homebrew packages..."
   brew cleanup
 
-  outdated_packages=$(brew outdated)
+  outdated_packages=$(brew outdated -v)
   if [ -n "$outdated_packages" ]; then
     echo "Outdated homebrew packages, brew upgrade [package]..."
     echo "$outdated_packages"
