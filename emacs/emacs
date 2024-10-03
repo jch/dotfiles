@@ -140,3 +140,6 @@
 (mapcar (lambda (plugin-name)
           (load (concat "load-" plugin-name ".el")))
         plugins-to-load)
+
+;; backspace within screen session
+(keyboard-translate ?\C-h ?\C-?)
