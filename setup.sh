@@ -15,6 +15,7 @@ fi
 mkdir -p $HOME/.profile.d
 
 echo "Setting up bash..."
+ln -nfs $DOTFILESDIR/bash/bashrc $HOME/.bashrc
 ln -nfs $DOTFILESDIR/bash/profile $HOME/.profile
 
 echo "Setting up emacs..."

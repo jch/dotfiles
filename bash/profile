@@ -13,7 +13,6 @@ alias z='zed'
 
 # Mac
 if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
-  eval "$(/usr/local/bin/brew shellenv)"
   alias ls='ls -G'
   alias updatedb='sudo /usr/libexec/locate.updatedb'
 fi
@@ -54,5 +53,5 @@ if [[ -f .jsg_token ]]; then
 fi
 
 eval "$(ssh-agent -s | grep -v 'echo')"
-eval "$(rbenv init -)"
 eval "$(fzf --bash)"
+source .bashrc

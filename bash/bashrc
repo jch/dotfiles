@@ -1,0 +1,15 @@
+# Non-interactive shell configuration
+if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+eval "$(rbenv init -)"
+
+cd() {
+    builtin cd "$@" || return
+    if [ -f .env ]; then
+        echo "Sourcing .env file in $(pwd)"
+        set -a
+        . ./.env
+        set +a
+    fi
+}
