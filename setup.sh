@@ -55,14 +55,14 @@ if [ Darwin == $(uname) ] ; then
   #
   # defaults write [domain] [key] [-type] [value]
   # Writing an unknown key in valid domain succeeds; Unknown domain fails
-  echo "[Off] automatic device backups when plugging in phone"
+  echo "[ ] automatic device backups when plugging in phone"
   defaults write com.apple.AMPDevicesAgent.plist AutomaticDeviceBackupsDisabled -bool true
 
-  echo "[Off] Desktop & Dock > Tile by dragging windows to screen edges"
+  echo "[ ] Desktop & Dock > Tile by dragging windows to screen edges"
   defaults write com.apple.WindowManager EnableTilingByEdgeDrag -int 0
-  echo "[Off] Desktop & Dock > Hold option key while dragging windows to tile"
+  echo "[ ] Desktop & Dock > Hold option key while dragging windows to tile"
   defaults write com.apple.WindowManager EnableTilingOptionAccelerator -int 1
-  echo "[On] Desktop & Dock > Tiled windows have margins"
+  echo "[x] Desktop & Dock > Tiled windows have margins"
   defaults write com.apple.WindowManager EnableTiledWindowMargins -int 0
 
   which brew > /dev/null 2>&1 || {
