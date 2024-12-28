@@ -53,7 +53,6 @@ if [[ -f .jsg_token ]]; then
 fi
 
 eval "$(ssh-agent -s | grep -v 'echo')"
-eval "$(fzf --bash)"
 
 # Added by `rbenv init` on Sat Dec 28 02:53:46 PM PST 2024
 eval "$(~/.rbenv/bin/rbenv init - --no-rehash bash)"
