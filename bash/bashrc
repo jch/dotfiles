@@ -1,15 +1,59 @@
-# Non-interactive shell configuration
-if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
-eval "$(rbenv init -)"
+# Variables
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export PAGER='less'
+export EDITOR='zed --wait'
+export PS1='\[\033[0;31m\]\w\[\033[0;33m\]\[\e[0m\] $ '
 
-cd() {
-    builtin cd "$@" || return
-    if [ -f .env ]; then
-        echo "Sourcing .env file in $(pwd)"
-        set -a
-        . ./.env
-        set +a
-    fi
-}
+# Shell
+alias ls='ls --color'
+alias less='less -R'
+alias clr="find . -name '*.rej' -or -name '*.orig' -or -name '*~' -or -name '*.lock' -and -not -name 'Gemfile.lock' | xargs rm -f"
+alias emacs='emacs -nw'
+alias z='zed'
+
+# Mac
+if [[ FreeBSD == $(uname) ]] || [[ Darwin == $(uname) ]] ; then
+  alias ls='ls -G'
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
+fi
+
+# Ruby
+alias r='rake'
+alias b='bundle exec'
+alias ss='bin/dev'
+alias rc='rails c'
+alias db='rails dbconsole'
+alias dbm='rails db:migrate'
+alias t='rails test'
+alias testlog='touch log/test.log; less +F log/test.log; rm log/test.log'
+alias jp='ruby -rawesome_print -rjson -ne "ap JSON.parse(\$_)"'
+
+# Git
+alias d="git diff --cached"
+alias gm="git merge"
+alias ph="git push -u"
+alias pl="git pull"
+alias fe="git fetch"
+alias st="git status"
+alias aa="git add ."
+alias au="git add -u"
+alias ap="git add -p"
+alias cim="git commit -m"
+alias cam="git commit --amend"
+alias ch="git rev-parse HEAD | pbcopy; git show"
+alias st="git status"
+alias au="git add -u"
+alias ap="git add -p"
+alias ci="git commit"
+alias cim="git commit -m"
+
+# JSG
+if [[ -f .jsg_token ]]; then
+  source .jsg_token
+fi
+
+eval "$(ssh-agent -s | grep -v 'echo')"
+eval "$(fzf --bash)"
+
+# Added by `rbenv init` on Sat Dec 28 02:53:46 PM PST 2024
+eval "$(~/.rbenv/bin/rbenv init - --no-rehash bash)"

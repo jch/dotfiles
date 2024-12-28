@@ -89,5 +89,5 @@ if [ Darwin == $(uname) ] ; then
   fi
 fi
 
-echo "Sourcing profile..."
-source ~/.profile
+echo "Sourcing ~/.bashrc"
+source ~/.bashrc
